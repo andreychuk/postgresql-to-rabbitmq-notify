@@ -2,7 +2,7 @@ FROM node:6.9.2-alpine
 
 COPY ./app/ /var/www/html/web/
 
-RUN npm install && \
+RUN cd /var/www/html/web/ && npm install && \
     apk update && apk upgrade && \
     apk add git bash && \
     git clone https://github.com/vishnubob/wait-for-it.git /root/wfi
