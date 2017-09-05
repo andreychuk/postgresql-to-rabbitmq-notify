@@ -27,6 +27,7 @@ ps.addChannel('messenger', function(payload){
             ch.publish(payload.exchange, "", new Buffer(JSON.stringify(payload.data)));
             console.log(" [x] Exchange:  ", payload.exchange);
             console.log(" [x] Data:      ", payload.data);
+            console.log(" -------------- ");
         });
     });
 });
