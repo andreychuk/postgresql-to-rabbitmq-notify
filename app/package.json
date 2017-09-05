@@ -1,0 +1,18 @@
+{
+  "name": "listener",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "amqplib": "^0.5.1",
+    "moment": "^2.18.1",
+    "pg-pubsub": "^0.3.0",
+    "underscore": "^1.8.3",
+    "lodash": "4.17.4"
+  }
+}
