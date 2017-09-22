@@ -15,7 +15,11 @@
     Message data:
     {
         "exchange" - Exchange name
+        "type" - Exchange type
+        "options" - Exchange options
+        "headers" - message headers
         "data" - Document object
+         
     }     
 
 ## Environment Variables

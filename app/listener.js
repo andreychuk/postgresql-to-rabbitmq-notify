@@ -19,17 +19,22 @@ const cn = {
 };
 
 const ps = new PS(cn.getConnectionString());
-
-ps.addChannel('messenger', function(payload){
-    amqp.connect(rabbitConnectionString, function(err, conn) {
-        conn.createChannel(function(err, ch) {
-            ch.assertExchange(payload.exchange, 'topic', {durable: false});
-            ch.publish(payload.exchange, "", new Buffer(JSON.stringify(payload.data)));
-            console.log(" [x] Exchange:  ", payload.exchange);
-            console.log(" [x] Data:      ", payload.data);
-            console.log(" -------------- ");
-        });
+try {
+  ps.addChannel('messenger', function (payload) {
+    amqp.connect(rabbitConnectionString, function (err, conn) {
+      conn.createChannel(function (err, ch) {
+        ch.assertExchange(payload.exchange, payload.type, payload.options);
+        var ops = {};
+        if (payload.headers) {
+          ops = {headers: payload.headers}
+        }
+        ch.publish(payload.exchange, "", new Buffer(JSON.stringify(payload.data)), ops);
+        console.log(" [x] Exchange:  ", payload.exchange);
+        console.log(" [x] Data:      ", payload.data);
+        console.log(" -------------- ");
+      });
     });
-});
-
-
+  });
+} catch (e) {
+    console.error(e.message);
+}
