@@ -14,7 +14,7 @@ const cn = {
     user: process.env.POSTGRES_USER,
     password: process.env.POSTGRES_PASSWORD,
     getConnectionString: function () {
-        return 'postgres://' + this.user + ':' + this.password + '@' + this.host + '/' + this.database;
+        return 'postgres://' + this.user + ':' + this.password + '@' + this.host + ':' + this.port + '/' + this.database;
     }
 };
 
